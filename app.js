@@ -176,7 +176,7 @@ game.gyms.forEach((gym) => {
     gym.completed = true;
   }
 });
-console.log(game);
+// console.log(game);
 
 /*
 Exercise 13

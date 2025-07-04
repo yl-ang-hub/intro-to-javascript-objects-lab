@@ -58,7 +58,7 @@ const bestPokemon = pokemon.filter((eachPokemon) => {
     return eachPokemon;
   }
 });
-for (i = 0; i < 3; i++) {
+for (let i = 0; i < 3; i++) {
   const j = Math.floor(Math.random() * bestPokemon.length);
   game.party.push(bestPokemon[j]);
   bestPokemon.splice(j, 1);
@@ -69,7 +69,7 @@ Exercise 6
 1. Set the `completed` property to true for gyms with a difficulty below 3.
 2. Think about how you'd loop through the `gyms` array to check and update the `completed` property.
 */
-for (gym of game.gyms) {
+for (const gym of game.gyms) {
   if (gym.difficulty < 3) gym.completed = true;
 }
 
@@ -118,7 +118,7 @@ Exercise 9
 2. Think about how you can identify a starter Pokémon and then log their names.
 */
 
-for (eachPokemon of pokemon) {
+for (const eachPokemon of pokemon) {
   if (eachPokemon.starter) {
     console.log(`${eachPokemon.name} is a starter Pokemon.`);
   }
@@ -155,7 +155,7 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 
 // console.log(game);
 game.catchPokemon = (pokemonObj) => {
-  for (item of game.items) {
+  for (const item of game.items) {
     if (item.name === "pokeball" && item.quantity > 0) {
       item.quantity--;
       game.party.push(pokemonObj);
@@ -203,7 +203,7 @@ gymTally = {
   completed: 0,
   incomplete: 0,
 };
-for (gym of game.gyms) {
+for (const gym of game.gyms) {
   if (gym.completed) {
     gymTally.completed += 1;
   } else {
@@ -233,7 +233,7 @@ Exercise 15
 */
 
 // Since used for-of and forEach
-for (i in game.gyms) {
+for (const i in game.gyms) {
   if (game.gyms[i].difficulty < 8) {
     game.gyms[i].completed = true;
   }
@@ -250,8 +250,8 @@ Exercise 17
 1. Arrange the Pokémon in `game.party` by their HP. The one with the highest HP should come first.
 2. You'll need to use the `.sort()` method. How does the compare function work in sorting numbers?
 */
-game.party.sort((x, y) => x.hp - y.hp);
-// console.log(game);
+game.party.sort((x, y) => y.hp - x.hp);
+console.log(game.party);
 
 /*
 Exercise 18
@@ -284,7 +284,7 @@ const initialParty = game.party.map((eachPokemon) => eachPokemon.name);
 
 // Modify catchPokemon function
 game.catchPokemon = (pokemonObj) => {
-  for (item of game.items) {
+  for (const item of game.items) {
     if (item.name === "pokeball" && item.quantity > 0) {
       item.quantity--;
       game.party.push(pokemonObj);
@@ -334,7 +334,7 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 Solve Exercise 19 here:
 */
 game.catchPokemon = (pokemonObj) => {
-  for (item of game.items) {
+  for (const item of game.items) {
     if (item.name === "pokeball" && item.quantity > 0) {
       item.quantity--;
       game.party.push(pokemonObj);
@@ -379,7 +379,7 @@ game.catchPokemon = (pokemonName) => {
   }
 
   // Capture the pokemon with pokeball
-  for (item of game.items) {
+  for (const item of game.items) {
     if (item.name === "pokeball" && item.quantity > 0) {
       item.quantity--;
       game.party.push(targetPokemon);
@@ -442,3 +442,5 @@ for (const [key, value] of Object.entries(pokemonByType)) {
   count += value.length;
 }
 console.log(count);
+
+console.log(game);
